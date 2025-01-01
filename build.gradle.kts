@@ -1,7 +1,7 @@
 import org.gradle.configurationcache.extensions.capitalized
 
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "2.1.0"
     application
     id("maven-publish")
 }
@@ -10,15 +10,15 @@ group = "kr.heartpattern"
 version = "1.0.0-SNAPSHOT"
 
 repositories {
-    maven("https://repo.heartpattern.io/repository/maven-public/")
+   //  maven("https://repo.heartpattern.io/repository/maven-public/")
     mavenCentral()
 }
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.ow2.asm:asm:9.4")
-    implementation("com.github.ajalt:clikt:2.8.0")
-    implementation("me.tongfei:progressbar:0.9.5")
+    implementation("org.ow2.asm:asm:9.7.1")
+    implementation("com.github.ajalt.clikt:clikt:5.0.2")
+    implementation("me.tongfei:progressbar:0.10.1")
 }
 
 application {
@@ -27,6 +27,11 @@ application {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 publishing {
